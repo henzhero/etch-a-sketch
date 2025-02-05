@@ -6,3 +6,10 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.square {
+    height: 30px;
+    width: 30px;
+    background-color: lightblue;
+    border: 1px solid black;
+}
