@@ -1,15 +1,27 @@
 const container = document.querySelector("#container");
+const button = document.querySelector("#button");
+let input;
 
-for (let i = 0; i < 16; i++) {
-    for (let j = 0; j < 16; j++) {
-        const square = document.createElement("div");
-        square.classList.add("square");
+button.addEventListener("click", () => {
+    input = parseInt(prompt("How many squares? (<num> x <num>)"));
 
-        // square.addEventListener("mouseover", (e) => {
-        //     square.style.backgroundColor = "pink";
-        // })
+    if (input == NaN || input > 100) {
+        alert("Please choose numbers 1-100 only!");
+    }
 
-        container.appendChild(square);
+    createGrid(input);
+})
+
+function createGrid(size) {
+    container.innerHTML = '';
+
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+            const square = document.createElement("div");
+            square.classList.add("square");
+
+            container.appendChild(square);
+        }
     }
 }
 
@@ -18,3 +30,5 @@ container.addEventListener("mouseover", (e) => {
         e.target.classList.toggle("change");
     }
 })
+
+createGrid(16);
