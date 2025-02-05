@@ -1,5 +1,6 @@
 const container = document.querySelector("#container");
 const button = document.querySelector("#button");
+const clearButton = document.querySelector(".clear");
 let input;
 
 button.addEventListener("click", () => {
@@ -18,14 +19,15 @@ function createGrid(size) {
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
             const square = document.createElement("div");
-            square.classList.add("square");
 
+            square.style.height = `calc(100% / ${size})`;
+            square.style.width = `calc(100% / ${size})`;
+
+            square.classList.add("square");
             container.appendChild(square);
         }
     }
 }
-
-
 
 container.addEventListener("mouseover", (e) => {
     if (e.target.classList.contains("square")) {
@@ -44,5 +46,10 @@ container.addEventListener("mouseover", (e) => {
         e.target.style.backgroundColor = getRandomColor();
     }
 })
+
+clearButton.addEventListener("click", () => {
+    container.innerHTML = '';
+    createGrid(16);
+});
 
 createGrid(16);
